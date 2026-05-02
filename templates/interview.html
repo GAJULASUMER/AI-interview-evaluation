@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% block content %}
+<div class="card"><h3>Interview</h3>
+<p>Answer each question. Optional voice typing uses browser speech API.</p>
+<div id="q-list" data-questions='{{ questions|tojson }}'></div>
+<button id="submit-btn">Submit Interview</button>
+<pre id="result"></pre>
+</div>
+<script src="{{ url_for('static', filename='js/interview.js') }}"></script>
+{% endblock %}
