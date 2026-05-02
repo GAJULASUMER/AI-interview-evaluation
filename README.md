@@ -1,73 +1,69 @@
-# AI-interview-evaluation
+# AI-Based Automated Interview Evaluation System (Flask + MySQL)
 
-Starter full-stack scaffold for the **AI-Powered Mock Interview System** using **React + Flask + MongoDB**. This repo provides a working baseline with key API routes, data models, and UI pages that map to the requested features.
+This project recreates an AI interview evaluation workflow using:
+- **Backend:** Flask (Python)
+- **Frontend:** HTML/CSS/JavaScript (Jinja templates)
+- **Database:** MySQL
 
-## Structure
+## Features
+1. User authentication (register/login/logout)
+2. Resume upload (`pdf/doc/docx/txt`) and parsing
+3. AI-style interview question generation from extracted skills
+4. Real-time answer capture via text + browser voice input
+5. NLP-based answer evaluation (relevance + depth)
+6. Scoring + feedback generation for each question
+7. Dashboard with score history and latest detailed report
+8. Persistent storage of users/resumes/interview records
+
+## Folder Structure
 
 ```
-backend/
-  app/
-    routes/
-    services/
-    utils/
-  app.py
-  requirements.txt
-  .env.example
-frontend/
-  src/
-    pages/
-    services/
-  index.html
-  package.json
+/app.py
+/templates
+/static
+/models
+/database
+/routes
+/utils
+/requirements.txt
 ```
 
-## Backend
+## Setup Instructions
 
-### Setup
+1. **Create MySQL DB and tables**
+   ```bash
+   mysql -u root -p < database/schema.sql
+   ```
 
-```bash
-cd backend
-python -m venv .venv
-source .venv/bin/activate
-pip install -r requirements.txt
-cp .env.example .env
-python app.py
-```
+2. **Create virtual environment and install dependencies**
+   ```bash
+   python -m venv .venv
+   source .venv/bin/activate
+   pip install -r requirements.txt
+   ```
 
-### API Endpoints (sample)
+3. **Set environment variables** (optional defaults exist)
+   ```bash
+   export SECRET_KEY='your-secret'
+   export MYSQL_HOST='127.0.0.1'
+   export MYSQL_PORT='3306'
+   export MYSQL_USER='root'
+   export MYSQL_PASSWORD='password'
+   export MYSQL_DB='ai_interview'
+   export UPLOAD_FOLDER='uploads'
+   ```
 
-- `POST /api/auth/signup`
-- `POST /api/auth/verify-otp`
-- `POST /api/auth/login`
-- `POST /api/auth/forgot-password`
-- `POST /api/auth/reset-password`
-- `POST /api/resume/upload`
-- `POST /api/interview/submit`
-- `POST /api/interview/report`
-- `POST /api/interview/email-report`
-- `GET /api/dashboard/profile`
-- `GET /api/dashboard/history`
-- `GET /api/admin/users`
-- `DELETE /api/admin/users/<user_id>`
-- `GET /api/admin/interviews`
-- `POST /api/admin/roles`
-- `POST /api/admin/questions`
-- `POST /api/chatbot/ask`
+4. **Run application**
+   ```bash
+   python app.py
+   ```
 
-## Frontend
+5. Open browser: `http://127.0.0.1:5000`
 
-```bash
-cd frontend
-npm install
-npm run dev
-```
-
-## Environment Variables
-
-See `backend/.env.example` for MongoDB Atlas and SMTP settings.
-
-## Notes
-
-- The current code provides placeholder services for ATS scoring, interview evaluation, and HR chatbot responses.
-- Extend `backend/app/services/` with production ML pipelines (Whisper, MediaPipe, ATS analysis) and integrate file uploads and GridFS.
-- The UI pages are minimal but wired to API endpoints for quick iteration.
+## Workflow
+1. Register/Login
+2. Upload resume
+3. Start AI-generated interview
+4. Answer by typing or voice input button
+5. Submit interview to receive scoring and feedback
+6. View history and detailed report in dashboard

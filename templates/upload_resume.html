@@ -1,0 +1,6 @@
+{% extends 'base.html' %}{% block content %}
+<div class="card"><h3>Upload Resume</h3>
+<form method="post" enctype="multipart/form-data">
+<input type="file" name="resume" accept=".pdf,.doc,.docx,.txt" required>
+<button>Upload & Parse</button></form>
+</div>{% endblock %}

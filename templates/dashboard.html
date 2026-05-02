@@ -1,0 +1,14 @@
+{% extends 'base.html' %}{% block content %}
+<div class="grid">
+<div class="card"><h3>Interview History</h3>
+{% for item in interviews %}
+<p><strong>{{ item.created_at }}</strong> — Score: {{ item.overall_score }} | {{ item.summary }}</p>
+{% else %}<p>No interview history yet.</p>{% endfor %}
+</div>
+<div class="card"><h3>Latest Detailed Feedback</h3>
+{% for d in details %}
+<p><b>Q:</b> {{ d.question }}</p><p><b>Score:</b> {{ d.score }} | {{ d.feedback }}</p><hr>
+{% else %}<p>No details yet.</p>{% endfor %}
+</div>
+</div>
+{% endblock %}
